@@ -1,0 +1,15 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+    -fx-background-color: #ffffff;
+    
+}
+.slidebar{
+    -fx-background-color: #B5EAEA;
+   
+}
+.box{
+    -fx-background-color: #99ccff;
+}
