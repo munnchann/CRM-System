@@ -10,83 +10,74 @@ package model;
  * @author Mun Chan
  */
 public class product {
-    int id;
-    String codePro;
-    String namePro;
-    Double price;
-    String descriptionPro;
-    int amount;
-    private categoryPro cate_pro;
+   int ID;
+   String NameProduct;
+   Double Price;
+   int Amount;
+   String DescripProduct;
+//   private byte[] ImageProduct;
+   private categoryPro cate_pro;
 
     public product() {
     }
-    
-    public product(int id,String codePro, String namePro, Double price, String descriptionPro, int amount, categoryPro cate_pro) {
-        this.id = id;
-        this.codePro = codePro;
-        this.namePro = namePro;
-        this.price = price;
-        this.descriptionPro = descriptionPro;
-        this.amount = amount;
+
+    public product(int ID, String NameProduct, Double Price, int Amount, String DescripProduct, categoryPro cate_pro) {
+        this.ID = ID;
+        this.NameProduct = NameProduct;
+        this.Price = Price;
+        this.Amount = Amount;
+        this.DescripProduct = DescripProduct;
+//        this.ImageProduct = ImageProduct;
         this.cate_pro = cate_pro;
     }
 
-    public product(String codePro,String namePro, Double price, String descriptionPro, int amount, categoryPro cate_pro) {
-         this.codePro = codePro;
-        this.namePro = namePro;
-        this.price = price;
-        this.descriptionPro = descriptionPro;
-        this.amount = amount;
-        this.cate_pro = cate_pro;
+    public int getID() {
+        return ID;
     }
 
-    public int getId() {
-        return id;
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getNameProduct() {
+        return NameProduct;
     }
 
-    public String getCodePro() {
-        return codePro;
-    }
-
-    public void setCodePro(String codePro) {
-        this.codePro = codePro;
-    }
-    
-    public String getNamePro() {
-        return namePro;
-    }
-
-    public void setNamePro(String namePro) {
-        this.namePro = namePro;
+    public void setNameProduct(String NameProduct) {
+        this.NameProduct = NameProduct;
     }
 
     public Double getPrice() {
-        return price;
+        return Price;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    public String getDescriptionPro() {
-        return descriptionPro;
-    }
-
-    public void setDescriptionPro(String descriptionPro) {
-        this.descriptionPro = descriptionPro;
+    public void setPrice(Double Price) {
+        this.Price = Price;
     }
 
     public int getAmount() {
-        return amount;
+        return Amount;
     }
 
-    public void setAmount(int amount) {
-        this.amount = amount;
+    public void setAmount(int Amount) {
+        this.Amount = Amount;
     }
+
+    public String getDescripProduct() {
+        return DescripProduct;
+    }
+
+    public void setDescripProduct(String DescripProduct) {
+        this.DescripProduct = DescripProduct;
+    }
+
+//    public byte[] getImageProduct() {
+//        return ImageProduct;
+//    }
+//
+//    public void setImageProduct(byte[] ImageProduct) {
+//        this.ImageProduct = ImageProduct;
+//    }
 
     public categoryPro getCate_pro() {
         return cate_pro;
@@ -95,4 +86,5 @@ public class product {
     public void setCate_pro(categoryPro cate_pro) {
         this.cate_pro = cate_pro;
     }
+   
 }
