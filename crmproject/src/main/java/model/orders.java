@@ -25,6 +25,12 @@ public class orders {
         this.Total = Total;
     }
 
+    public orders(String Dat, customer idcus, Double Total) {
+        this.Dat = Dat;
+        this.idcus = idcus;
+        this.Total = Total;
+    }
+    
     public int getID() {
         return ID;
     }

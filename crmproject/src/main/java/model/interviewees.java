@@ -23,6 +23,12 @@ public class interviewees {
         this.EmailInterviewees = EmailInterviewees;
     }
 
+    public interviewees(String NameInterviewees, String PhoneInterviewees, String EmailInterviewees) {
+        this.NameInterviewees = NameInterviewees;
+        this.PhoneInterviewees = PhoneInterviewees;
+        this.EmailInterviewees = EmailInterviewees;
+    }
+    
     public int getIDInterviewees() {
         return IDInterviewees;
     }
