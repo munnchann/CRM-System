@@ -24,7 +24,7 @@ public class categoryemp {
 
         public boolean insert(category_employee catemp)
                 throws Exception {
-            String sql = "INSERT INTO category_employee(IDCateEmp, Position, RankEmployee) values(?,?,?)";
+            String sql = "INSERT INTO categoryemployee(IDCateEmp, Position, RankEmployee) values(?,?,?)";
             try (
                     Connection con = DBConnection.openConnection();
                     PreparedStatement pstmt = con.prepareStatement(sql);) {
@@ -37,23 +37,23 @@ public class categoryemp {
 
         public boolean update(category_employee catemp)
                 throws Exception {
-            String sql = "update category"
+            String sql = "update categoryemployee"
                     + " set Position= ?, RankEmployee = ?"
                     + " where IDCateEmp= ?";
             try (
                     Connection con = DBConnection.openConnection();
                     PreparedStatement pstmt = con.prepareStatement(sql);) {
-                pstmt.setInt(1, catemp.getIDCateEmp());
-                pstmt.setString(2, catemp.getPosition());
-                pstmt.setInt(3, catemp.getRankEmployee());
+                pstmt.setInt(3, catemp.getIDCateEmp());
+                pstmt.setString(1, catemp.getPosition());
+                pstmt.setInt(2, catemp.getRankEmployee());
                 return pstmt.executeUpdate() > 0;
             }
         }
 
         public boolean delete(category_employee catemp)
                 throws Exception {
-            String sql = "delete from category"
-                    + " where id= ?";
+            String sql = "delete from categoryemployee"
+                    + " where IDCateEmp= ?";
             try (
                     Connection con = DBConnection.openConnection();
                     PreparedStatement pstmt = con.prepareStatement(sql);) {
@@ -64,7 +64,7 @@ public class categoryemp {
 
         public category_employee findById(int id)
                 throws Exception {
-            String sql = "select* from category where IDCateEmp= ?";
+            String sql = "select* from categoryemployee where IDCateEmp= ?";
             try (
                     Connection con = DBConnection.openConnection();
                     PreparedStatement pstmt = con.prepareStatement(sql);) {
@@ -82,7 +82,7 @@ public class categoryemp {
 
         public category_employee findByName(String Position)
                 throws Exception {
-            String sql = "select* from category where Position='" + Position + "'";
+            String sql = "select* from categoryemployee where Position='" + Position + "'";
             try (
                     Connection con = DBConnection.openConnection();
                     PreparedStatement pstmt = con.prepareStatement(sql);) {
@@ -107,7 +107,7 @@ public class categoryemp {
 
         public List<category_employee> findAll()
                 throws Exception {
-            String sql = "select * from category";
+            String sql = "select * from categoryemployee";
             try (
                     Connection con = DBConnection.openConnection();
                     PreparedStatement pstmt = con.prepareStatement(sql);) {

@@ -90,7 +90,7 @@ public class employeeDao {
 
     public employee findById(int id)
             throws Exception {
-        String sql = "SELECT employee.ID, AccountEmployee, PassEmployee, NameEmployee, Phone, EmailEmployee, SexEmployee, Salary, IDCateEmp, category_employee.Position FROM employee INNER JOIN category_employee ON employee.IDCateEmp= category_employee.IDCateEmp where employee.ID='" + id + "'";
+        String sql = "SELECT employee.ID, AccountEmployee, PassEmployee, NameEmployee, Phone, EmailEmployee, SexEmployee, Salary, IDCateEmp, categoryemployee.Position FROM employee INNER JOIN categoryemployee ON employee.IDCateEmp= categoryemployee.IDCateEmp where employee.ID='" + id + "'";
         try (
                 Connection con = DBConnection.openConnection();
                 PreparedStatement pstmt = con.prepareStatement(sql);) {
@@ -131,7 +131,7 @@ public class employeeDao {
         Statement stmt = null;
         ResultSet rs = null;
         try {
-            String sql = "SELECT employee.ID, AccountEmployee, PassEmployee, NameEmployee, Phone, EmailEmployee, SexEmployee, Salary, IDCateEmp, category_employee.Position FROM employee INNER JOIN category_employee ON employee.IDCateEmp= category_employee.IDCateEmp";
+            String sql = "SELECT employee.ID, AccountEmployee, PassEmployee, NameEmployee, Phone, EmailEmployee, SexEmployee, Salary, IDCateEmp, categoryemployee.Position FROM employee INNER JOIN categoryemployee ON employee.IDCateEmp= categoryemployee.IDCateEmp";
             Connection con = DBConnection.openConnection();
             stmt = con.createStatement();
             rs = stmt.executeQuery(sql);

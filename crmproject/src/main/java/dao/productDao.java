@@ -5,6 +5,8 @@
  */
 package dao;
 
+import java.io.Serial;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -36,18 +38,17 @@ public class productDao {
 
     public boolean insert(product pro)
             throws Exception {
-        String sql = "INSERT INTO product(`id`, codePro, namePro, price, descriptionPro, amount, `cate_pro` )"
-                + "values(?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO product(`ID`, `NameProduct`, `Price`, `Amount`, `DescripProduct`,  `IDCateProduct`)"
+                + "values(?,?,?,?,?,?)";
         try (
                 Connection con = DBConnection.openConnection();
                 PreparedStatement pstmt = con.prepareStatement(sql);) {
-            pstmt.setInt(1, pro.getId());
-            pstmt.setString(2, pro.getCodePro());
-            pstmt.setString(3, pro.getNamePro());
-            pstmt.setDouble(4, pro.getPrice());
-            pstmt.setString(5, pro.getDescriptionPro());
-            pstmt.setInt(6, pro.getAmount());
-            pstmt.setInt(7, pro.getCate_pro().getIdcateproduct());
+            pstmt.setInt(1, pro.getID());
+            pstmt.setString(2, pro.getNameProduct());
+            pstmt.setDouble(3, pro.getPrice());
+            pstmt.setInt(4, pro.getAmount());
+            pstmt.setString(5, pro.getDescripProduct());
+            pstmt.setInt(6, pro.getCate_pro().getIDCateProduct());
             return pstmt.executeUpdate() > 0;
         }
 
@@ -56,18 +57,17 @@ public class productDao {
     public boolean update(product pro)
             throws Exception {
         String sql = "update product"
-                + " set  codePro=?, namePro=?, price=?, descriptionPro=?, amount=?, `cate_pro=?` "
-                + " where id= ?";
+                + " set `NameProduct`=?, `Price`=?, `Amount`=?, `DescripProduct`=?,  `IDCateProduct`=? "
+                + " where ID= ?";
         try (
                 Connection con = DBConnection.openConnection();
                 PreparedStatement pstmt = con.prepareStatement(sql);) {
-            pstmt.setInt(7, pro.getId());
-            pstmt.setString(1, pro.getCodePro());
-            pstmt.setString(2, pro.getNamePro());
-            pstmt.setDouble(3, pro.getPrice());
-            pstmt.setString(4, pro.getDescriptionPro());
-            pstmt.setInt(5, pro.getAmount());
-            pstmt.setInt(6, pro.getCate_pro().getIdcateproduct());
+            pstmt.setInt(6, pro.getID());
+            pstmt.setString(1, pro.getNameProduct());
+            pstmt.setDouble(2, pro.getPrice());
+            pstmt.setInt(3, pro.getAmount());
+            pstmt.setString(4, pro.getDescripProduct());
+            pstmt.setInt(5, pro.getCate_pro().getIDCateProduct());
             return pstmt.executeUpdate() > 0;
         }
     }
@@ -75,31 +75,30 @@ public class productDao {
     public boolean delete(product pro)
             throws Exception {
         String sql = "delete from product"
-                + " where id= ?";
+                + " where ID= ?";
         try (
                 Connection con = DBConnection.openConnection();
                 PreparedStatement pstmt = con.prepareStatement(sql);) {
-            pstmt.setInt(1, pro.getId());
+            pstmt.setInt(1, pro.getID());
             return pstmt.executeUpdate() > 0;
         }
     }
 
-    public product findById(int id)
+    public product findById(int ID)
             throws Exception {
-        String sql = "SELECT product.id, codePro, namePro, price, descriptionPro, amount, `cate_pro`, categoryPro.namecateproduct  FROM product INNER JOIN categoryPro ON product.cate_pro= categoryPro.idcateproduct where product.id='" + id + "'";
+        String sql = "SELECT product.ID, `NameProduct`, `Price`, `Amount`, `DescripProduct`, `ImageProduct`, `IDCateProduct`  FROM product INNER JOIN categoryproduct ON product.IDCateProduct= categoryproduct.IDCateProduct where product.ID='" + ID + "'";
         try (
                 Connection con = DBConnection.openConnection();
                 PreparedStatement pstmt = con.prepareStatement(sql);) {
             try (ResultSet rs = pstmt.executeQuery()) {
                 while (rs.next()) {
                     product pro = new product();
-                    pro.setId(rs.getInt("Id"));
-                    pro.setCodePro(rs.getString("codePro"));
-                    pro.setNamePro(rs.getString("namePro"));
-                    pro.setPrice(rs.getDouble("price"));
-                    pro.setDescriptionPro(rs.getString("descriptionPro"));
-                    pro.setAmount(rs.getInt("amount"));
-                    pro.setCate_pro(new categoryPro(rs.getInt("cate_pro"), rs.getString("namecatepro")));
+                    pro.setID(rs.getInt("ID"));
+                    pro.setNameProduct(rs.getString("NameProduct"));
+                    pro.setPrice(rs.getDouble("Price"));
+                    pro.setAmount(rs.getInt("Amount"));
+                    pro.setDescripProduct(rs.getString("DescripProduct"));
+                    pro.setCate_pro(new categoryPro(rs.getInt("cate_pro"), rs.getString("NameCateProduct")));
                     return pro;
                 }
             }
@@ -126,19 +125,18 @@ public class productDao {
         Statement stmt = null;
         ResultSet rs = null;
         try {
-            String sql = "SELECT product.id, codePro, namePro, price, descriptionPro, amount, `cate_pro`, categoryPro.namecateproduct  FROM product INNER JOIN categoryPro ON product.cate_pro= categoryPro.idcateproduct where product.id=";
+            String sql = "SELECT product.ID, `NameProduct`, `Price`, `Amount`, `DescripProduct`, `ImageProduct`, `IDCateProduct`  FROM product INNER JOIN categoryproduct ON product.IDCateProduct= categoryproduct.IDCateProduct where product.ID=";
             Connection con = DBConnection.openConnection();
             stmt = con.createStatement();
             rs = stmt.executeQuery(sql);
             while (rs.next()) {
-                product pro = new product();
-                pro.setId(rs.getInt("Id"));
-                pro.setCodePro(rs.getString("codePro"));
-                pro.setNamePro(rs.getString("namePro"));
-                pro.setPrice(rs.getDouble("price"));
-                pro.setDescriptionPro(rs.getString("descriptionPro"));
-                pro.setAmount(rs.getInt("amount"));
-                pro.setCate_pro(new categoryPro(rs.getInt("cate_pro"), rs.getString("namecatepro")));
+                 product pro = new product();
+                    pro.setID(rs.getInt("ID"));
+                    pro.setNameProduct(rs.getString("NameProduct"));
+                    pro.setPrice(rs.getDouble("Price"));
+                    pro.setAmount(rs.getInt("Amount"));
+                    pro.setDescripProduct(rs.getString("DescripProduct"));
+                    pro.setCate_pro(new categoryPro(rs.getInt("cate_pro"), rs.getString("NameCateProduct")));
                 listpro.add(pro);
             }
 //                return listbook;

@@ -17,7 +17,7 @@ public class DBConnection {
     
     public static Connection openConnection() throws Exception {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        String url = "jdbc:mysql://localhost:3306/test?useSSL=false";
+        String url = "jdbc:mysql://localhost:3306/crm?useSSL=false";
         String user = "root";
         String password = "";
         Connection con = (Connection) DriverManager.getConnection(url, user, password);

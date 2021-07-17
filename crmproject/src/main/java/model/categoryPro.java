@@ -10,34 +10,34 @@ package model;
  * @author Mun Chan
  */
 public class categoryPro {
-     int idcateproduct;
-    String namecateproduct;
+    int IDCateProduct;
+    String NameCateProduct;
 
     public categoryPro() {
     }
 
-    public categoryPro(int idcateproduct, String namecateproduct) {
-        this.idcateproduct = idcateproduct;
-        this.namecateproduct = namecateproduct;
+    public categoryPro(int IDCateProduct, String NameCateProduct) {
+        this.IDCateProduct = IDCateProduct;
+        this.NameCateProduct = NameCateProduct;
     }
 
     public categoryPro(String namecateproduct) {
-        this.namecateproduct = namecateproduct;
+        this.NameCateProduct = namecateproduct;
     }
 
-    public int getIdcateproduct() {
-        return idcateproduct;
+    public int getIDCateProduct() {
+        return IDCateProduct;
     }
 
-    public void setIdcateproduct(int idcateproduct) {
-        this.idcateproduct = idcateproduct;
+    public void setIDCateProduct(int IDCateProduct) {
+        this.IDCateProduct = IDCateProduct;
     }
 
-    public String getNamecateproduct() {
-        return namecateproduct;
+    public String getNameCateProduct() {
+        return NameCateProduct;
     }
 
-    public void setNamecateproduct(String namecateproduct) {
-        this.namecateproduct = namecateproduct;
+    public void setNameCateProduct(String namecateproduct) {
+        this.NameCateProduct = namecateproduct;
     }
 }

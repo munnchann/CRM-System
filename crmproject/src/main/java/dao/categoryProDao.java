@@ -22,45 +22,45 @@ public class categoryProDao {
     
         public boolean insert(categoryPro catePro)
                 throws Exception {
-            String sql = "INSERT INTO categoryPro(idcateproduct,  namecateproduct) values(?,?)";
+            String sql = "INSERT INTO categoryproduct(IDCateProduct,  NameCateProduct) values(?,?)";
             try (
                     Connection con = DBConnection.openConnection();
                     PreparedStatement pstmt = con.prepareStatement(sql);) {
-                pstmt.setInt(1, catePro.getIdcateproduct());
-                pstmt.setString(2, catePro.getNamecateproduct());
+                pstmt.setInt(1, catePro.getIDCateProduct());
+                pstmt.setString(2, catePro.getNameCateProduct());
                 return pstmt.executeUpdate() > 0;
             }
         }
 
         public boolean update(categoryPro catePro)
                 throws Exception {
-            String sql = "update categoryPro"
-                    + " set namecateproduct = ?"
-                    + " where idcateproduct= ?";
+            String sql = "update categoryproduct"
+                    + " set NameCateProduct = ?"
+                    + " where IDCateProduct= ?";
             try (
                     Connection con = DBConnection.openConnection();
                     PreparedStatement pstmt = con.prepareStatement(sql);) {
-                pstmt.setInt(2, catePro.getIdcateproduct());
-                pstmt.setString(1, catePro.getNamecateproduct());
+                pstmt.setInt(2, catePro.getIDCateProduct());
+                pstmt.setString(1, catePro.getNameCateProduct());
                 return pstmt.executeUpdate() > 0;
             }
         }
 
         public boolean delete(categoryPro catePro)
                 throws Exception {
-            String sql = "delete from categoryPro"
-                    + " where idcateproduct= ?";
+            String sql = "delete from categoryproduct"
+                    + " where IDCateProduct= ?";
             try (
                     Connection con = DBConnection.openConnection();
                     PreparedStatement pstmt = con.prepareStatement(sql);) {
-                pstmt.setInt(1, catePro.getIdcateproduct());
+                pstmt.setInt(1, catePro.getIDCateProduct());
                 return pstmt.executeUpdate() > 0;
             }
         }
 
         public categoryPro  findById(int id)
                 throws Exception {
-            String sql = "select* from categoryPro where idcateproduct= ?";
+            String sql = "select* from categoryproduct where IDCateProduct= ?";
             try (
                     Connection con = DBConnection.openConnection();
                     PreparedStatement pstmt = con.prepareStatement(sql);) {
@@ -76,9 +76,9 @@ public class categoryProDao {
             return null;
         }
 
-        public categoryPro findByName(String namecateproduct)
+        public categoryPro findByName(String NameCateProduct)
                 throws Exception {
-            String sql = "select* from categoryPro where namecateproduct='" + namecateproduct + "'";
+            String sql = "select* from categoryproduct where NameCateProduct='" + NameCateProduct + "'";
             try (
                     Connection con = DBConnection.openConnection();
                     PreparedStatement pstmt = con.prepareStatement(sql);) {
@@ -95,14 +95,14 @@ public class categoryProDao {
 
         private categoryPro createCategory(final ResultSet rs) throws SQLException {
             categoryPro catePro = new categoryPro();
-            catePro.setIdcateproduct(rs.getInt("idcateproduct"));
-            catePro.setNamecateproduct(rs.getString("namecateproduct"));
+            catePro.setIDCateProduct(rs.getInt("IDCateProduct"));
+            catePro.setNameCateProduct(rs.getString("NameCateProduct"));
             return catePro;
         }
 
         public List<categoryPro> findAll()
                 throws Exception {
-            String sql = "select * from categoryPro";
+            String sql = "select * from categoryproduct";
             try (
                     Connection con = DBConnection.openConnection();
                     PreparedStatement pstmt = con.prepareStatement(sql);) {
