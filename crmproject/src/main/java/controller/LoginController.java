@@ -5,9 +5,15 @@
  */
 package controller;
 
+import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
@@ -16,6 +22,15 @@ import javafx.fxml.Initializable;
  */
 public class LoginController implements Initializable {
 
+    @FXML
+    private AnchorPane content_area;
+    @FXML
+    private TextField txtUsername;
+    @FXML
+    private PasswordField txtPassword;
+    @FXML
+    private JFXButton btnSignin;
+
     /**
      * Initializes the controller class.
      */
@@ -23,5 +38,10 @@ public class LoginController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void close_app(MouseEvent event) {
+        System.exit(0);
+    }
     
 }

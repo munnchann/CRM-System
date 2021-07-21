@@ -32,7 +32,7 @@
             <scope>compile</scope>
             <version>8.9</version>
         </dependency>
-         <dependency>
+        <dependency>
             <groupId>com.jfoenix</groupId>
             <artifactId>jfoenix</artifactId>
             <scope>compile</scope>
