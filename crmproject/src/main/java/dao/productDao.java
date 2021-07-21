@@ -4,9 +4,6 @@
  * and open the template in the editor.
  */
 package dao;
-
-import java.io.Serial;
-import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,6 +11,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import model.categoryPro;
 import model.product;
 import util.DBConnection;
@@ -121,7 +120,8 @@ public class productDao {
 //    }
 
     public List<product> findAll() throws Exception {
-        List<product> listpro = new ArrayList<>();
+//        List<product> listpro = new ArrayList<>();
+        ObservableList<product> listpro = FXCollections.observableArrayList();
         Statement stmt = null;
         ResultSet rs = null;
         try {

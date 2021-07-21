@@ -14,6 +14,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.Connection;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import model.category_employee;
 
 /**
@@ -127,7 +129,8 @@ public class employeeDao {
     }
 
     public List<employee> findAll() throws Exception {
-        List<employee> listemp = new ArrayList<>();
+//        List<employee> listemp = new ArrayList<>();
+        ObservableList<employee> listemp = FXCollections.observableArrayList();
         Statement stmt = null;
         ResultSet rs = null;
         try {

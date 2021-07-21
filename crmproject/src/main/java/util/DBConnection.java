@@ -14,7 +14,7 @@ import java.sql.SQLException;
  * @author Mun Chan
  */
 public class DBConnection {
-    
+    Connection con = null;
     public static Connection openConnection() throws Exception {
         Class.forName("com.mysql.cj.jdbc.Driver");
         String url = "jdbc:mysql://localhost:3306/crm?useSSL=false";
